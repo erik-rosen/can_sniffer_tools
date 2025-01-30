@@ -25,7 +25,7 @@ This tool is designed for use with the Arduino Due and the `due_can` library.
 
 ## Installation
 1. Clone or download the source code.
-2. Open the sketch in the Arduino IDE.
+2. Open the `change_monitor.ino` sketch in the Arduino IDE.
 3. Install the `due_can` library if not already installed.
 4. Connect the hardware components properly (if connecting to a car, the ODB2 port typically has CANL and CANH pins).
 5. Compile and upload the sketch to the Arduino Due.
