@@ -5,7 +5,7 @@ This Arduino-based CAN Bus monitoring tool is very nifty to reverse engineer CAN
 
 1. **Baseline Phase**: Collects message bits for each CAN ID that change during the recording. A mask is produced to ignore these bits in subsequent phases.
 2. **Modification Phase**: Applies the baseline mask to messages to ignore bits that changed in baseline phase. This phase identifies bits that change between messages and records them in a modification mask. It is in this phase where you would press buttons or change the state of your vehicle to find the corresponding CAN ID and bits. 
-3. **Monitoring Phase**: Continuously monitors and reports changes to bits that were identified as modifiable during the modification phase, ignoring the bits that changed during the baseline phase.
+3. **Monitoring Phase**: Continuously monitors and reports changes to bits that were identified as modified during the modification phase, ignoring the bits that changed during the baseline phase.
 
 This tool is designed for use with the Arduino Due and the `due_can` library.
 
@@ -15,7 +15,7 @@ This tool is designed for use with the Arduino Due and the `due_can` library.
 - Summarizes all modified bits at the end of the modification phase.
 
 ## Hardware Requirements
-- **Arduino Due** (or any board with two CAN controllers and compatible software support)
+- **Arduino Due** (or any board with a CAN controller and compatible software support)
 - **CAN Bus Transceiver Module**
 - **CAN Bus Network**
 
@@ -34,7 +34,7 @@ This tool is designed for use with the Arduino Due and the `due_can` library.
 ### 1. Baseline Phase
 - The program collects data from all incoming CAN messages.
 - It applies a bitwise AND across all received messages for each CAN ID.
-- The resulting value represents stable bits.
+- The resulting value represents stable bits that do not change during this phase.
 
 ### 2. Modification Phase
 - The program tracks differences between new messages and the baseline.
